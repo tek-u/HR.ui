@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'data-latin', monospace;
+    /* src: url("./data-latin.ttf") format("opentype"); */
+    src: url("/src/assets/fonts/data-latin.ttf") format('truetype'),
+         url("/src/assets/fonts/data-unifon.ttf") format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Data Control';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Data Control'), url('./data-latin.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Data Control Unifon';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Data Control Unifon'), url('./data-unifon.woff') format('woff');
+    }

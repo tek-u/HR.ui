@@ -1,0 +1,68 @@
+<div class="mat-app-background basic-container">
+  <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+
+    <ng-container matColumnDef="{{ column.name }}" *ngFor="let column of mapColumns">
+      <ng-container *ngIf="column.name !== 'action'">
+        <th mat-header-cell *matHeaderCellDef> {{ column.display }} </th>
+        <td mat-cell *matCellDef="let element"> {{ element[column.name] }} </td>
+      </ng-container>
+
+      <ng-container *ngIf="column.name === 'action' ">
+        <th mat-header-cell *matHeaderCellDef>
+          <button mat-icon-button color="warn" class="add-btn" (click)="Add()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </th>
+        <td mat-cell *matCellDef="let element"> {{ element[column.name] }}
+          <table class="action">
+            <tr>
+              <td >
+                <button mat-icon-button color="warn" matTooltip="Delete" (click)="Delete(element.id)" >
+                  <i class="fa fa-recycle fa-lg" aria-hidden="true"></i>
+                </button>
+            </td>
+            <td >
+                <button mat-icon-button matTooltip="Edit" matToolTipPosition="top" >
+                  <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </ng-container>
+    </ng-container>
+
+    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+    <ng-container matColumnDef="expandedDetail">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+        <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+          <div class="example-element-diagram">
+            <div class="example-element-position"> {{ element.id }} </div>
+            <div class="example-element-lname"> {{ element.lname }} </div>
+            <div class="example-element-fname"> {{ element.fname }} </div>
+          </div>
+          <div class="example-element-description">
+            <table>
+              <tr><td>Phone: {{ element.phone }}</td></tr>
+              <tr><td>Email: {{ element.email }}</td></tr>
+              <tr><td>Active: {{ element.isActive }}</td></tr>
+              <tr><td>Created On: {{ element.created }}</td></tr>
+            </table>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+              class="example-element-row"
+              [class.example-expanded-row]="expandedElement === element"
+              (click)="expandedElement = element">
+    </tr>
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+
+  </table>
+</div>
+
+
+

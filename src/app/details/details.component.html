@@ -1,0 +1,89 @@
+<h2 mat-dialog-title>NEW USER</h2>
+<!-- <mat-card-subtitle>{{ detailLpn }}</mat-card-subtitle> -->
+<hr>
+
+<mat-dialog-content>
+
+  <table [formGroup]="userForm" id="userForm" novalidate formgroup (ngSubmit)="onSubmit()">
+    <tr>
+      <td class="detailCol">
+        <div class="container">
+          <div class="row">
+            <mat-form-field appearance="standard" >
+              <mat-label>First Name</mat-label>
+              <input matInput placeholder="first name" formControlName="fname" >
+              <!-- <i matSuffix class="fa fa-regular fa-f " aria- hidden="true"></i> -->
+              <mat-icon matSuffix>first_page</mat-icon>
+              <mat-error *ngIf="userForm.controls['fname'].hasError('required')">
+                Fist name is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field appearance="standard" >
+              <mat-label>Last Name</mat-label>
+              <input matInput placeholder="last name" formControlName="lname" >
+              <mat-icon matSuffix>last_page</mat-icon>
+              <mat-error *ngIf="userForm.controls['lname'].hasError('required')">
+                Last name is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field appearance="standard" >
+              <mat-label>Phone</mat-label>
+              <input matInput placeholder="phone" formControlName="phone" >
+              <mat-icon matSuffix>contact_phone</mat-icon>
+              <mat-error *ngIf="userForm.controls['phone'].hasError('required')">
+                Phone is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field appearance="standard" >
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="email" formControlName="email" >
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+          </div>
+          <!-- <div class="row">
+            <mat-form-field >
+              <input matInput formControlName="id" >
+            </mat-form-field>
+            <mat-form-field >
+              <input matInput formControlName="isActive" >
+            </mat-form-field>
+            <mat-form-field >
+              <input matInput formControlName="created" >
+            </mat-form-field>
+          </div> -->
+        </div>
+      </td>
+
+    </tr>
+
+  </table>
+
+</mat-dialog-content>
+<hr>
+<mat-dialog-actions>
+  <table>
+    <tr>
+      <td>
+        <button #btnSubmit mat-raised-button matTooltip="Save / Submit" (click)="onSubmit()">
+          <!-- <mat-icon class="btnSubmit" >check</mat-icon> -->
+          Save
+        </button>
+      </td>
+      <td style="width: 5px;"></td>
+      <td>
+        <button #btnCancel mat-raised-button matTooltip="CANCEL" matToolTipPosition="above" (click)="onClose()">
+          <!-- <mat-icon class="btnCancel">close</mat-icon> -->
+          Cancel
+        </button>
+      </td>
+    </tr>
+  </table>
+</mat-dialog-actions>
+
+
